@@ -1,0 +1,28 @@
+<template>
+
+    <div>
+        <button class="slds-button slds-button_neutral" onclick={handleNewButton}>New Contact</button>
+    </div>
+    <lightning-datatable 
+    key-field="Name" 
+    data={lstContacts} 
+    columns={columns} 
+    onrowaction={handleRowAction}>
+
+    </lightning-datatable>
+
+    <template if:true={displayModal}>
+        <c-modal-l-w-c>
+            <div slot="body"> 
+                <c-form-l-w-c 
+                    oncancel={handleCloseModal} 
+                    onsave={handleSave} 
+                    row-fields={rowFields}
+                    columns={columns}
+                    title={title}>
+
+                </c-form-l-w-c>
+            </div>
+        </c-modal-l-w-c>
+    </template>
+</template>

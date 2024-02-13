@@ -1,0 +1,25 @@
+<template>
+    <div class="container">
+        <div class="header">
+            <slot name="title"></slot>
+        </div>
+        <div class="content">
+            
+                <div class="slds-grid slds-grid_vertical">
+                    <template for:each={fieldValues} for:item="field">
+                        <div key={field.fieldName} class="slds-col slds-size_1-of-2">
+                            <lightning-input label={field.label} data-id={field.fieldName} value={field.value} onchange={handleFieldChange}></lightning-input>
+                        </div>
+    
+                       </template>
+            </div>
+            
+        </div>
+        <div class="actions">
+            <slot name="actions">
+                <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+                <lightning-button label="Save" onclick={handleSave} variant="brand"></lightning-button>
+            </slot>
+        </div>
+    </div>
+</template>
